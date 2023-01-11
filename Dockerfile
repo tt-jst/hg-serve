@@ -1,12 +1,10 @@
 FROM debian:latest
 
-RUN apt-get update && apt-get install -y apt-utils python-dev python3-dev python3-docutils mercurial build-essential python3.9-distutils gcc pip 
+RUN apt-get update && apt-get install -y python3-dev python3-docutils build-essential python3.9-distutils wget
 
-RUN pip install mercurial 
+RUN cd /tmp && wget -O - https://www.mercurial-scm.org/release/mercurial-6.3.2.tar.gz | gunzip | tar xf -
 
-RUN hg clone -U https://www.mercurial-scm.org/repo/hg-stable /tmp/hg && cd /tmp/hg && hg up "max(tagged())" 
-
-RUN cd /tmp/hg && make install
+RUN cd $(ls -d /tmp/mercurial*) && make install && cd /tmp && rm -rf "$(ls -d /tmp/mercurial*)"
 
 RUN hg --version
 
