@@ -10,13 +10,13 @@ Multiple container can be run when using different outside ports.
 # Create the image
 
 ```
-docker build -t hg-serve:6.5.1 .
+docker build -t hg-serve:6.6.3 .
 ```
 
 # Run docker
 
 ```
-sudo docker run -p 8000:8000 -v /path/to/repository:/repo:rw hg-serve:6.5.1
+sudo docker run -p 8000:8000 -v /path/to/repository:/repo:rw hg-serve:6.6.3
 ```
 
 # docker-compose
@@ -26,7 +26,7 @@ version: "3"
 
 services:
   my-great-hg-repo:
-    image: hg-serve:6.5.1
+    image: hg-serve:6.6.3
     restart: always
     volumes:
       - /path/to/repo:/repo:rw
