@@ -2,7 +2,7 @@ version: "3"
 
 services:
   my-great-hg-repo:
-    image: hg-serve:1.0
+    image: hg-serve:6.6.3
     restart: always
     volumes:
       - /path/to/repo:/repo:rw
